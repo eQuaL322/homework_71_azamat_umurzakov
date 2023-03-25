@@ -1,0 +1,33 @@
+{% load static %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% block content %}
+    <div class="d-flex justify-content-center flex-column
+    align-items-center my-4">
+        <div class="px-5 py-4 border" style="width: 380px;height: auto">
+            <div class="d-flex mt-2 mb-3">
+                <img src="../../static/img/instalogowhite.png" alt="signuplogo"
+                     style="width:195px; height:75px;margin: 5px auto;" class="d-inline">
+            </div>
+            <div class="d-flex mt-2 mb-3">
+                <p class="text-center">Зарегистрируйтесь, чтобы смотреть фото и видео ваших друзей.</p>
+            </div>
+
+            <form method="post">
+                <div class="form">
+                    {% csrf_token %}
+                    {% bootstrap_form form %}
+                </div>
+                <div class="form_row">
+                    <input type="submit" value="Регистрация" class="btn btn-primary"
+                           style="width: 282px;height: 36px; border-radius: 10px;">
+                </div>
+            </form>
+            <div class="text-center mt-4">
+                <p>Есть аккаунт? <a href="{% url 'login' %}">Вход</a></p>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}

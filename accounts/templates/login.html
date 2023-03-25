@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+{% block title %}login{% endblock %}
+{% block content %}
+    <div class="d-flex justify-content-center flex-column
+    align-items-center">
+        <div class="px-5 py-4 border" style="width: 380px;height: 400px">
+            <div class="d-flex mt-2 mb-3">
+                <img src="../../static/img/instalogowhite.png" alt="signuplogo"
+                     style="width:195px; height:65px;margin: 5px auto;" class="d-inline">
+            </div>
+            <form method="post">
+                <div class="form">
+                    {% csrf_token %}
+                    {% bootstrap_form form %}
+                </div>
+                <div class="form_row">
+                    <input type="submit" value="Войти" class="btn btn-primary"
+                           style="width: 282px;height: 38px; border-radius: 10px;">
+                </div>
+            </form>
+            <p class="registr mt-5">У вас ещё нет аккаунта? <a href="{% url 'register' %}">Зарегистрироваться</a></p>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Главная страница
+{% endblock %}
+
+{% block content %}
+    <div class="row row-cols-3 row-cols-md-1 g-4">
+
+        {% for post in posts %}
+
+            <div class="row row-cols-1 g-4" id="{{ post.pk }}">
+                <div class="col" style="width: min-content;">
+
+                    <div class="card ">
+                        <div class="card-header">
+                            <div>
+                                {% if post.author.avatar %}
+                                    <img class="rounded-circle" src="{{ post.author.avatar.url }}" alt="image"
+                                         height="30" width="30">
+                                {% else %}
+                                    <img class="rounded-circle" src="{% static 'img/placeholder.png' %}" alt="image"
+                                         height="23" width="23">
+                                {% endif %}
+                                <a href="{% url 'account_detail' post.author.username %}">
+                                    <b>{{ post.author }}</b>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="box">
+                            {% if post.image %}
+                                <a href="{% url 'post_detail' post.pk %}">
+                                <img class="box_img border border-2 img" src="{{ post.image.url }}" alt="image"
+                                     width="500">
+                            {% else %}
+                                <img class="box_img border border-2 rounded-circle img"
+                                     src="{% static 'img/placeholder.png' %}" alt="image" width="500">
+                            {% endif %}
+                            </a>
+                        </div>
+                        <div class="ms-3 mt-1">
+                            {% if user in post.liked_users.all %}
+                                <a href="{% url 'unlike' post.pk %}"><img src="{% static 'icon/heart_like.png' %}"
+                                                                          alt="heart" height="25" width="25"></a>
+
+                            {% else %}
+                                <a href="{% url 'like' post.pk %}"><img src="{% static 'icon/heart_unlike.png' %}"
+                                                                        alt="heart" height="25" width="25"></a>
+
+                            {% endif %}
+
+                        </div>
+                        {% comment %} <img src="..." class="card-img-top" alt="..."> {% endcomment %}
+                        <div class="card-body">
+                            <p>{{ post.liked_users.all.count }} отметок "Нравится"</p>
+                            <a href="{% url 'post_detail' post.pk %}">
+                                <p class="text-muted">Просмотреть все комментарии {{ post.comments.all.count }}</p>
+                            </a>
+                            <b>@{{ post.author }}</b>
+
+                            <span class="card-text">{{ post.description }}</span>
+                        </div>
+                        {% comment %} <div class="card-footer">
+        </div> {% endcomment %}
+                    </div>
+                </div>
+
+            </div>
+
+        {% endfor %}
+
+{% endblock %}
