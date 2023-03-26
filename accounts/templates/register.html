@@ -2,10 +2,14 @@
 {% load bootstrap5 %}
 {% bootstrap_css %}
 {% bootstrap_javascript %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>{% block title %}Регистрация{% endblock %}</title>
+</head>
 {% block content %}
     <div class="d-flex justify-content-center flex-column
     align-items-center my-4">
-        <div class="px-5 py-4 border" style="width: 380px;height: auto">
+        <div class="form_reg px-5 py-4 border" style="width: 380px;height: auto">
             <div class="d-flex mt-2 mb-3">
                 <img src="../../static/img/instalogowhite.png" alt="signuplogo"
                      style="width:195px; height:75px;margin: 5px auto;" class="d-inline">

@@ -1,3 +1,36 @@
 .registr {
     font-size: 12px;
 }
+
+.logo {
+    width: 53px;
+    height: 30px;
+    margin-top: 5px;
+    margin-left: 26px;
+    border-right: 1px solid;
+    padding-right: 23px;
+}
+
+.logo_2 {
+    width: 120px;
+    height: 30px;
+    margin-left: -20px;
+    margin-top: 11px;
+}
+
+.navbar {
+    box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.12);
+    margin-bottom: 20px;
+    height: 58px;
+}
+
+.form_log {
+    box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, 0.2);
+    margin-top: 80px;
+}
+
+.form_reg {
+    box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, 0.2);
+
+}
+

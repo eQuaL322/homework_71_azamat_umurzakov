@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView
 
 from accounts.models import Account
@@ -19,5 +20,4 @@ class PostListView(ListView):
         posts = Post.objects.all()
         subscriptions_posts = posts.filter(author__in=subscriptions)
         context['posts'] = subscriptions_posts
-
         return context
