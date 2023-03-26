@@ -2,11 +2,13 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout, get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.paginator import Paginator
+from django.db.models import Q
 from django.shortcuts import redirect
 from django.urls import reverse
-from django.views.generic import TemplateView, CreateView, DetailView, UpdateView
+from django.views.generic import TemplateView, CreateView, DetailView, UpdateView, ListView
 
 from accounts.forms import LoginForm, CustomUserCreationForm, UserChangeForm
+from accounts.models import Account
 
 
 class LoginView(TemplateView):
@@ -83,3 +85,22 @@ class UserChangeView(UpdateView):
 
     def get_success_url(self):
         return reverse('profile', kwargs={'pk': self.object.pk})
+
+
+class SearchAccountListView(ListView):
+    template_name: str = 'accounts_search.html'
+    model = Account
+    context_object_name = 'accounts'
+
+    def get(self, request, *args, **kwargs):
+        self.search_value = request.GET.get('search')
+        return super().get(request, *args, **kwargs)
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        if self.search_value:
+            queryset = queryset.filter(
+                Q(first_name__iregex=self.search_value) | Q(email__iregex=self.search_value) | Q(
+                    username__iregex=self.search_value)
+            )
+        return queryset

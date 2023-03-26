@@ -4,9 +4,44 @@
 {% block title %}
     Главная страница
 {% endblock %}
-
 {% block content %}
-    <div class="row row-cols-3 row-cols-md-1 g-4">
-
-    </div>
+    {% if request.user.is_authenticated %}
+        <div class="src_filed_2 mb-4">
+            {% if posts %}
+                {% for post in posts %}
+                    <div class="card-group">
+                        <div class="card">
+                            <div class="card-text">
+                                {% if post.author.image %}
+                                    <img class=" rounded-circle my-2 ml-2" src="{{ post.author.image }}" alt="image"
+                                         height="35"
+                                         width="35">
+                                {% else %}
+                                    <img class=" rounded-circle my-2 ml-2" src="https://via.placeholder.com/50x50"
+                                         alt="image"
+                                         height="35"
+                                         width="35">
+                                {% endif %}
+                                <a href="#" class="post_header">{{ post.author.username }}</a>
+                            </div>
+                            <img src="{{ post.image }}" style="width: 500px; height: 550px" class="card-img-top"
+                                 alt="...">
+                            <div class="card-body">
+                                <p class="card-text text-muted">{{ post.likes_count }} отметок "Нравится"</p>
+                                <p class="card-text" style="font-size: 15px;">{{ post.description }}</p>
+                                <p class="card-text" style="font-size: 15px;">Комментарии {{ post.comments_count }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                {% endfor %}
+            {% else %}
+                <h1>No posts yet</h1>
+            {% endif %}
+        </div>
+    {% else %}
+        <div class="container">
+            <p>Please <a href="{% url 'login' %}">log in</a></p>
+        </div>
+    {% endif %}
 {% endblock %}

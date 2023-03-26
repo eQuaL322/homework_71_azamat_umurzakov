@@ -28,13 +28,15 @@
                         <img class="logo_2" src="{% static 'img/instalogo.svg' %}" alt="logo">
                     </a>
                 </li>
-                <li class="nav-item">
-                    <form class="text-center" style="font-size:15px;padding-right: 300px" action="" method="GET">
-                        {{ form.search }}
-                        {% for error in form.search.errors %}
-                            <p class="form-error">{{ error }}</p>
-                        {% endfor %}
+                <li class="nav_item search_form">
+                    <form action="{% url 'account_search' %}" method="GET">
+                        {% csrf_token %}
+                        <input class="input_search" placeholder="Search" name="search" type="text">
+                        <input hidden="hidden" type="submit" value="Поиск">
                     </form>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'post_create' %}">create post</a>
                 </li>
                 {#                {% if user.is_authenticated %}#}
                 {#                    <li class="nav-item">#}

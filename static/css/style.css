@@ -15,11 +15,11 @@
     width: 120px;
     height: 30px;
     margin-left: -20px;
-    margin-top: 11px;
+    margin-top: 15px;
 }
 
 .navbar {
-    box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.12);
+    box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.09);
     margin-bottom: 20px;
     height: 58px;
 }
@@ -27,10 +27,48 @@
 .form_log {
     box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, 0.2);
     margin-top: 80px;
+    border-radius: 5px;
 }
 
 .form_reg {
     box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, 0.2);
-
+    border-radius: 5px;
 }
 
+.search_form {
+    padding-top: 19px;
+    margin-left: 230px;
+}
+
+.input_search {
+    text-align: center;
+    border: #d3d1d3 0.5px solid;
+    border-radius: 2px
+}
+
+.input_search::placeholder {
+    font-size: 14px;
+}
+
+.src_filed {
+    padding-top: 10px;
+    width: 600px;
+    margin: 0 auto;
+    border: #d3d1d3 0.5px solid;
+    height: 650px;
+    border-radius: 2px;
+}
+
+.src_filed_2 {
+    padding-top: 10px;
+    width: 500px;
+    margin: 0 auto;
+    border-radius: 2px;
+}
+
+.post_header {
+    font-size: 15px;
+    text-decoration: none;
+    color: black;
+    margin-left: 6px;
+}
