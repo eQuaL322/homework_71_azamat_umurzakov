@@ -18,6 +18,13 @@
     margin-top: 15px;
 }
 
+.logo_3 {
+    width: 30px;
+    height: 30px;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
 .navbar {
     box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.09);
     margin-bottom: 20px;
@@ -71,4 +78,44 @@
     text-decoration: none;
     color: black;
     margin-left: 6px;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+    color: gray;
+
+}
+
+a:active {
+    text-decoration: none;
+}
+
+.log_out {
+    font-size: 14px;
+    margin-top: 15px;
+}
+
+.add_post_logo {
+    width: 25px;
+    height: 25px;
+    margin-top: 22px;
+    margin-left: 240px;
+}
+
+.card-description {
+    font-size: 13px;
+    margin-bottom: 5px;
+}
+
+.post-img {
+    width: 100%;
+
 }

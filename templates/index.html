@@ -22,14 +22,17 @@
                                          height="35"
                                          width="35">
                                 {% endif %}
-                                <a href="#" class="post_header">{{ post.author.username }}</a>
+                                <a href="{% url 'account_detail' username=post.author.username %}"
+                                   class="post_header">{{ post.author.username }}</a>
                             </div>
-                            <img src="{{ post.image }}" style="width: 500px; height: 550px" class="card-img-top"
-                                 alt="...">
+                            <img src="/uploads/posts/{{ post.image }}" class="post-img card-img-top"
+                                 alt="load error">
                             <div class="card-body">
-                                <p class="card-text text-muted">{{ post.likes_count }} отметок "Нравится"</p>
-                                <p class="card-text" style="font-size: 15px;">{{ post.description }}</p>
-                                <p class="card-text" style="font-size: 15px;">Комментарии {{ post.comments_count }}</p>
+                                <p class="card-text text-muted card-description">{{ post.likes_count }} отметок
+                                    "Нравится"</p>
+                                <p class="card-text card-description">{{ post.description }}</p>
+                                <p class="card-text card-description text-muted">Посмотреть все комментарии
+                                    ({{ post.comments_count }})</p>
                             </div>
                         </div>
                     </div>

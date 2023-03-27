@@ -36,20 +36,22 @@
                     </form>
                 </li>
                 <li class="nav-item">
-                    <a href="{% url 'post_create' %}">create post</a>
+                    <a href="{% url 'post_create' %}">
+                        <img src="{% static 'img/plus-square.svg' %}" alt="#" class="add_post_logo">
+                    </a>
                 </li>
-                {#                {% if user.is_authenticated %}#}
-                {#                    <li class="nav-item">#}
-                {#                        <a class="nav-link" href="{% url 'create_post' user.pk %}">#}
-                {#                            <i class="material-icons" style="font-size:25px;">add_a_photo</i>#}
-                {#                        </a>#}
-                {#                    </li>#}
-                {#                    <li class="nav-item">#}
-                {#                        <a class="nav-link" href="{% url 'profile' user.pk %}">#}
-                {#                            <i class="material-icons" style="font-size:25px;">account_circle</i>#}
-                {#                        </a>#}
-                {#                    </li>#}
-                {#                {% endif %}#}
+                {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a href="{% url 'account_detail' username=request.user.username %}" class="nav-link">
+                            <img src="{% static 'img/account-logo.png' %}" class="logo_3" alt="#">
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'logout' %}" class="nav-link log_out">
+                            Log Out
+                        </a>
+                    </li>
+                {% endif %}
             </ul>
         </div>
     </div>

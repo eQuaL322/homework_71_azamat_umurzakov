@@ -6,14 +6,14 @@
 {% block content %}
     <div class="text-center src_filed">
         {% for account in accounts %}
-            {#            <a class=" " href="{% url 'account_detail' account.username %}">#}
-            {% if account.avatar %}
-                <img class=" rounded-circle" src="{{ account.avatar }}" alt="image" height="50" width="50">
-            {% else %}
-                <img class=" rounded-circle" src="https://via.placeholder.com/50x50" alt="image" height="50"
-                     width="50">
-            {% endif %}
-            <h6 class="d-inline">@{{ account.username }}</h6>
+            <a class="post_header" href="{% url 'account_detail' username=account.username %}">
+                {% if account.avatar %}
+                    <img class=" rounded-circle" src="{{ account.avatar }}" alt="image" height="50" width="50">
+                {% else %}
+                    <img class=" rounded-circle" src="https://via.placeholder.com/50x50" alt="image" height="50"
+                         width="50">
+                {% endif %}
+                <h6 class="d-inline">@{{ account.username }}</h6>
             </a>
             <hr>
         {% endfor %}

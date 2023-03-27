@@ -14,7 +14,8 @@ class Account(AbstractUser):
     email = models.EmailField(
         verbose_name='Электронная почта',
         unique=True,
-        blank=True
+        blank=True,
+        null=False,
     )
     avatar = models.ImageField(
         null=True,
@@ -29,6 +30,7 @@ class Account(AbstractUser):
     )
     about_me = models.TextField(
         null=True,
+        blank=True,
         max_length=300,
         verbose_name='Информация о пользователе'
     )

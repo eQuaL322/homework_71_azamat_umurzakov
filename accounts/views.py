@@ -23,19 +23,13 @@ class LoginView(TemplateView):
     def post(self, request, *args, **kwargs):
         form = self.form(request.POST)
         if not form.is_valid():
-            messages.error(request, 'Некорректные данные')
-            return redirect('index')
-        email = form.cleaned_data.get('email')
-        password = form.cleaned_data.get('password')
-        user = authenticate(request, email=email, password=password)
+            return redirect('login')
+        email: str = form.cleaned_data.get('email')
+        password: str = form.cleaned_data.get('password')
+        user = authenticate(request=request, email=email, password=password)
         if not user:
-            messages.warning(request, 'Пользователь не найден')
-            return redirect('index')
+            return redirect('login')
         login(request, user)
-        messages.success(request, 'Добро пожаловать')
-        next = request.GET.get('next')
-        if next:
-            return redirect(next)
         return redirect('index')
 
 
@@ -59,22 +53,22 @@ class RegisterView(CreateView):
         return self.render_to_response(context)
 
 
-class ProfileView(LoginRequiredMixin, DetailView):
-    model = get_user_model()
-    template_name = 'user_detail.html'
-    context_object_name = 'user_obj'
-    paginate_related_by = 3
-    paginate_related_orphans = 0
-
-    def get_context_data(self, **kwargs):
-        articles = self.object.articles.order_by('-created_at')
-        paginator = Paginator(articles, self.paginate_related_by, orphans=self.paginate_related_orphans)
-        page_number = self.request.GET.get('page', 1)
-        page = paginator.get_page(page_number)
-        kwargs['page_obj'] = page
-        kwargs['articles'] = page.object_list
-        kwargs['is_paginated'] = page.has_other_pages()
-        return super().get_context_data(**kwargs)
+# class ProfileView(LoginRequiredMixin, DetailView):
+#     model = get_user_model()
+#     template_name = 'user_detail.html'
+#     context_object_name = 'user_obj'
+#     paginate_related_by = 3
+#     paginate_related_orphans = 0
+#
+#     def get_context_data(self, **kwargs):
+#         articles = self.object.articles.order_by('-created_at')
+#         paginator = Paginator(articles, self.paginate_related_by, orphans=self.paginate_related_orphans)
+#         page_number = self.request.GET.get('page', 1)
+#         page = paginator.get_page(page_number)
+#         kwargs['page_obj'] = page
+#         kwargs['articles'] = page.object_list
+#         kwargs['is_paginated'] = page.has_other_pages()
+#         return super().get_context_data(**kwargs)
 
 
 class UserChangeView(UpdateView):
@@ -104,3 +98,12 @@ class SearchAccountListView(ListView):
                     username__iregex=self.search_value)
             )
         return queryset
+
+
+class AccountDetailView(DetailView):
+    model = Account
+    template_name = 'user_profile.html'
+    context_object_name = 'profile'
+    slug_field = 'username'
+    slug_url_kwarg = 'username'
+
