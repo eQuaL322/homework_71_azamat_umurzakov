@@ -25,11 +25,28 @@
                     <img src="{{ post.image.url }}" class="post-img"
                          alt="load error">
                 </div>
+                <div class="pl-3 like">
+                    {% if request.user in post.user_likes.all %}
+                        <a href="{% url 'like' post.pk %}">
+                            <img class="mt-2 ml-1"
+                                 src="{% static 'img/liked.png' %}"
+                                 alt="like" height="28px">
+                        </a>
+                    {% else %}
+                        <a href="{% url 'like' post.pk %}">
+                            <img class="mt-2 ml-1"
+                                 src="{% static 'img/like.png' %}"
+                                 alt="like" height="28px">
+                        </a>
+                    {% endif %}
+                    <img class="mt-2 ml-1" src="{% static 'img/comment.png' %}" alt="like" height="31px"
+                         width="34px">
+                </div>
                 <div class="card-body">
                     <p class="card-text text-muted card-description">{{ post.likes_count }} отметок
                         "Нравится"</p>
                     <p class="card-text card-description">{{ post.description }}</p>
-                    <p class="card-text card-description text-muted">Посмотреть все комментарии
+                    <p class="card-text card-description text-muted">Комментарии
                         ({{ post.comments_count }})</p>
                     {% for comment in post.comments.all %}
                         <p class="card-comment mb-1"><b>{{ comment.author.username }}</b></p>

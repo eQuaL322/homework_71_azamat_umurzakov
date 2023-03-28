@@ -1,7 +1,7 @@
 from django.urls import path
 
 from accounts.views import LoginView, logout_view, RegisterView, UserChangeView, SearchAccountListView, \
-    AccountDetailView
+    AccountDetailView, subscribe_view, unsubscribe_view
 
 urlpatterns = [
     path('login/', LoginView.as_view(), name='login'),
@@ -10,4 +10,6 @@ urlpatterns = [
     path('profile/<int:pk>/change', UserChangeView.as_view(), name='change'),
     path('accounts/search', SearchAccountListView.as_view(), name='account_search'),
     path('<str:username>/', AccountDetailView.as_view(), name='account_detail'),
+    path('<str:username>/subscribe', subscribe_view, name='subscribe'),
+    path('<str:username>/unsubscribe', unsubscribe_view, name='unsubscribe'),
 ]

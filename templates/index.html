@@ -29,24 +29,42 @@
                                 <img src="{{ post.image.url }}" class="post-img"
                                      alt="load error">
                             </div>
-                            <div class="card-body">
+                            <div class="pl-3 like">
+                                {% if request.user in post.user_likes.all %}
+                                    <a href="{% url 'like' post.pk %}">
+                                        <img class="mt-2 ml-1"
+                                             src="{% static 'img/liked.png' %}"
+                                             alt="like" height="28px">
+                                    </a>
+                                {% else %}
+                                    <a href="{% url 'like' post.pk %}">
+                                        <img class="mt-2 ml-1"
+                                             src="{% static 'img/like.png' %}"
+                                             alt="like" height="28px">
+                                    </a>
+                                {% endif %}
+                                <img class="mt-2 ml-1" src="{% static 'img/comment.png' %}" alt="like" height="31px"
+                                     width="34px">
+                            </div>
+                            <div class="card-body pt-1">
                                 <p class="card-text text-muted card-description">{{ post.likes_count }} отметок
                                     "Нравится"</p>
                                 <p class="card-text card-description">{{ post.description }}</p>
-                                <p class="card-text card-description text-muted">Посмотреть все комментарии
-                                    ({{ post.comments_count }})</p>
+                                <a href="{% url 'post_detail' post.pk %}"><p
+                                        class="card-text card-description text-muted">Посмотреть все комментарии
+                                    ({{ post.comments_count }})</p></a>
                             </div>
                         </div>
                     </div>
                     <hr>
                 {% endfor %}
             {% else %}
-                <h1>No posts yet</h1>
+                <h5 class="text-muted mt-5">На данный момент в ленте отсутствуют посты</h5>
             {% endif %}
         </div>
     {% else %}
-        <div class="container">
-            <p>Please <a href="{% url 'login' %}">log in</a></p>
+        <div class="mt-5 container d-flex justify-content-center">
+            <p class="text-muted">Пожалуйста <a class="" href="{% url 'login' %}">войдите в учетную запись</a></p>
         </div>
     {% endif %}
 {% endblock %}

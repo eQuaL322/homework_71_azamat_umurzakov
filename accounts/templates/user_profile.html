@@ -27,10 +27,10 @@
                     {% else %}
                         {% if account in user.subscriptions.all %}
                             <a class="ml-3 mb-1 btn btn-secondary btn-sm ms-5"
-                               href="#">Отписаться</a>
+                               href="{% url 'unsubscribe' username=account.username %}">Отписаться</a>
                         {% else %}
                             <a class="ml-3 mb-1 btn btn-secondary btn-sm ms-5"
-                               href="#">Подписаться</a>
+                               href="{% url 'subscribe' username=account.username %}">Подписаться</a>
                         {% endif %}
                     {% endif %}
                 {% endif %}
