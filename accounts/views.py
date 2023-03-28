@@ -51,16 +51,6 @@ class RegisterView(CreateView):
         return self.render_to_response(context)
 
 
-class UserChangeView(UpdateView):
-    model = get_user_model()
-    form_class = UserChangeForm
-    template_name = 'user_change.html'
-    context_object_name = 'user'
-
-    def get_success_url(self):
-        return reverse('profile', kwargs={'pk': self.object.pk})
-
-
 class SearchAccountListView(ListView):
     template_name = 'accounts_search.html'
     model = Account

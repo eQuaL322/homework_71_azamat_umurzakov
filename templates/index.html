@@ -46,13 +46,19 @@
                                 <img class="mt-2 ml-1" src="{% static 'img/comment.png' %}" alt="like" height="31px"
                                      width="34px">
                             </div>
-                            <div class="card-body pt-1">
+                            <div class="card-body pt-1 pb-1">
                                 <p class="card-text text-muted card-description">{{ post.likes_count }} отметок
                                     "Нравится"</p>
                                 <p class="card-text card-description">{{ post.description }}</p>
                                 <a href="{% url 'post_detail' post.pk %}"><p
                                         class="card-text card-description text-muted">Посмотреть все комментарии
                                     ({{ post.comments_count }})</p></a>
+                                <form class="mt-1" action="{% url 'comment_add' post.pk %}" method="post">
+                                    {% csrf_token %}
+                                    <label for="text" hidden="hidden"></label>
+                                    <input name="text" class="comment-inpt text-muted" type="text"
+                                           placeholder="Добавьте комментарии...">
+                                </form>
                             </div>
                         </div>
                     </div>

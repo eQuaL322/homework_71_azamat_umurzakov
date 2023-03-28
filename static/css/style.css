@@ -156,3 +156,10 @@ a:active {
 .card-comment-date {
     font-size: 10px;
 }
+.comment-inpt {
+    font-size: 13px;
+    width: 200px;
+    border: 0;
+
+}
+

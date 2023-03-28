@@ -53,6 +53,12 @@
                         <p class="card-comment mb-1">{{ comment.text }}</p>
                         <p class="card-comment text-muted card-comment-date mb-2">{{ comment.created_at|date:"M d" }}</p>
                     {% endfor %}
+                    <form class="mt-1" action="{% url 'comment_add' post.pk %}" method="post">
+                        {% csrf_token %}
+                        <label for="text" hidden="hidden"></label>
+                        <input name="text" class="comment-inpt text-muted" type="text"
+                               placeholder="Добавьте комментарии...">
+                    </form>
                 </div>
             </div>
         </div>

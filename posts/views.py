@@ -1,3 +1,4 @@
+from django.contrib.auth import get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse
@@ -5,7 +6,8 @@ from django.views import View
 from django.views.generic import ListView, CreateView, DetailView
 
 from accounts.models import Account
-from posts.models import Post
+from posts.forms import CommentForm
+from posts.models import Post, Comment
 
 
 class PostListView(ListView):
@@ -62,3 +64,30 @@ class PostLikeView(View):
             user.liked_posts.remove(post)
             Post.objects.filter(id=post.id).update(likes_count=(post.likes_count - 1))
             return redirect('index')
+
+
+class CommentCreateView(LoginRequiredMixin, CreateView):
+    model = Comment
+    template_name = 'index.html'
+
+    def post(self, request, *args, **kwargs):
+        text = request.POST.get('text')
+        account = get_user_model()
+        author = account.objects.get(pk=request.user.pk)
+        post = Post.objects.get(pk=kwargs.get('pk'))
+        comment = Comment.objects.create(
+            author=author,
+            post=post,
+            text=text,
+        )
+
+        return redirect('post_detail', pk=kwargs.get('pk'))
+
+        #
+        # post = get_object_or_404(Post, pk=kwargs.get('pk'))
+        # if request.user not in post.user_comments.all():
+        #     post.user_comments.add(request.user)
+        #     user = Account.object.get(pk=request.user.pk)
+        #     user.user_comments.add(post)
+        #     Post.objects.filter(id=post.id).update(comments_count=(post.comments_count + 1))
+        #     return redirect('post_detail', kwargs={'pk': post})
