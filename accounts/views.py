@@ -1,11 +1,10 @@
-from django.contrib.auth import authenticate, login, logout, get_user_model
+from django.contrib.auth import authenticate, login, logout
 from django.core.handlers.wsgi import WSGIRequest
 from django.db.models import Q
 from django.shortcuts import redirect
-from django.urls import reverse
-from django.views.generic import TemplateView, CreateView, DetailView, UpdateView, ListView
+from django.views.generic import TemplateView, CreateView, DetailView, ListView
 
-from accounts.forms import LoginForm, CustomUserCreationForm, UserChangeForm
+from accounts.forms import LoginForm, CustomUserCreationForm
 from accounts.models import Account
 
 

@@ -1,0 +1,192 @@
+[
+{
+  "model": "accounts.account",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$390000$JbLzOUII3fGFdRLEQDPnLQ$kPl8r8/N9MG1XxzDIuy9zvcQLjILTZwE/h5lTqeCmWc=",
+    "last_login": "2023-03-28T13:13:46.762Z",
+    "is_superuser": true,
+    "username": "root",
+    "first_name": "Azamat",
+    "last_name": "Umurzakov",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2023-03-25T19:30:58.421Z",
+    "email": "root@example.com",
+    "avatar": "https://www.pinkvilla.com/files/tzuyu_main_0.png",
+    "birth_date": null,
+    "about_me": "Its my blog account",
+    "phone": null,
+    "sex": null,
+    "created_at": "2023-03-25T21:17:27.734Z",
+    "updated_at": "2023-03-25T21:17:27.769Z",
+    "groups": [],
+    "user_permissions": [],
+    "liked_posts": [],
+    "subscriptions": [
+      7
+    ],
+    "commented_posts": []
+  }
+},
+{
+  "model": "accounts.account",
+  "pk": 6,
+  "fields": {
+    "password": "pbkdf2_sha256$390000$AWeLPWyS7xodJhQdxAAZVH$XUTgbPGHGz10Gk8ILTXa4Jmrqo3pYa9cXjCveYqEuSQ=",
+    "last_login": "2023-03-26T19:55:39.378Z",
+    "is_superuser": false,
+    "username": "root5",
+    "first_name": "",
+    "last_name": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2023-03-26T19:45:53.606Z",
+    "email": "root5@example.com",
+    "avatar": "",
+    "birth_date": null,
+    "about_me": "",
+    "phone": null,
+    "sex": null,
+    "created_at": "2023-03-26T19:45:53.938Z",
+    "updated_at": "2023-03-26T19:45:53.938Z",
+    "groups": [],
+    "user_permissions": [],
+    "liked_posts": [],
+    "subscriptions": [],
+    "commented_posts": []
+  }
+},
+{
+  "model": "accounts.account",
+  "pk": 7,
+  "fields": {
+    "password": "pbkdf2_sha256$390000$83gAaXBXaZPk6bpb7qvMwa$uJP6cyFRBdSvH0TRlniqYhnYTbFbdEowH8D+InJuFqk=",
+    "last_login": "2023-03-28T10:06:30.686Z",
+    "is_superuser": false,
+    "username": "jack",
+    "first_name": "Jack",
+    "last_name": "Doe",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2023-03-27T08:05:28.870Z",
+    "email": "jack@example.com",
+    "avatar": "https://img1.goodfon.com/wallpaper/big/f/a1/simpsony-gomer-multfilm.jpg",
+    "birth_date": null,
+    "about_me": "Its example description",
+    "phone": null,
+    "sex": null,
+    "created_at": "2023-03-27T08:05:29.189Z",
+    "updated_at": "2023-03-27T08:05:29.189Z",
+    "groups": [],
+    "user_permissions": [],
+    "liked_posts": [
+      13,
+      14
+    ],
+    "subscriptions": [
+      1,
+      6
+    ],
+    "commented_posts": [
+      13
+    ]
+  }
+},
+{
+  "model": "posts.post",
+  "pk": 13,
+  "fields": {
+    "description": "Что вершит судьбу человечества в этом мире? Некое незримое существо или закон, подобно Длани Господней парящей над миром? По крайне мере истинно то, что человек не властен даже над своей волей.",
+    "image": "posts/images_Z6NyTVA.jpeg",
+    "author": 1,
+    "comments_count": 0,
+    "likes_count": 1,
+    "created_at": "2023-03-27T06:32:12.388Z",
+    "updated_at": "2023-03-27T06:32:12.395Z"
+  }
+},
+{
+  "model": "posts.post",
+  "pk": 14,
+  "fields": {
+    "description": "Мечта может стать поддержкой или источником страданий. Мечта может наполнить человека жизнью или убить его. Даже если мечта оставила человека, её частица будет всегда тлеть в глубине его сердца. Кажды",
+    "image": "posts/2ABF5AF1-CF15-401A-8AE3-12F6653B4918_7YM61mv.jpeg",
+    "author": 1,
+    "comments_count": 1,
+    "likes_count": 1,
+    "created_at": "2023-03-27T07:50:42.743Z",
+    "updated_at": "2023-03-27T07:50:42.747Z"
+  }
+},
+{
+  "model": "posts.post",
+  "pk": 15,
+  "fields": {
+    "description": "test",
+    "image": "posts/images.jpeg",
+    "author": 7,
+    "comments_count": 0,
+    "likes_count": 0,
+    "created_at": "2023-03-27T08:05:59.235Z",
+    "updated_at": "2023-03-27T08:05:59.239Z"
+  }
+},
+{
+  "model": "posts.post",
+  "pk": 16,
+  "fields": {
+    "description": "power",
+    "image": "posts/Bad-Devil-Arc-7.jpg",
+    "author": 1,
+    "comments_count": 0,
+    "likes_count": 0,
+    "created_at": "2023-03-28T08:45:23.511Z",
+    "updated_at": "2023-03-28T08:45:23.525Z"
+  }
+},
+{
+  "model": "posts.comment",
+  "pk": 2,
+  "fields": {
+    "author": 7,
+    "post": 14,
+    "text": "beautiful !!",
+    "created_at": "2023-03-28T15:03:37.341Z",
+    "updated_at": "2023-03-28T15:03:49.318Z"
+  }
+},
+{
+  "model": "posts.comment",
+  "pk": 8,
+  "fields": {
+    "author": 7,
+    "post": 13,
+    "text": "so cool!!!!",
+    "created_at": "2023-03-28T13:12:30.236Z",
+    "updated_at": "2023-03-28T13:12:30.236Z"
+  }
+},
+{
+  "model": "posts.comment",
+  "pk": 9,
+  "fields": {
+    "author": 7,
+    "post": 14,
+    "text": "wow",
+    "created_at": "2023-03-28T13:13:34.089Z",
+    "updated_at": "2023-03-28T13:13:34.089Z"
+  }
+},
+{
+  "model": "posts.comment",
+  "pk": 10,
+  "fields": {
+    "author": 1,
+    "post": 15,
+    "text": "my hero Guts!",
+    "created_at": "2023-03-28T13:13:58.249Z",
+    "updated_at": "2023-03-28T13:13:58.249Z"
+  }
+}
+]
