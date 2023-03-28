@@ -12,8 +12,8 @@
                     <div class="card-group">
                         <div class="card">
                             <div class="card-text">
-                                {% if post.author.image %}
-                                    <img class=" rounded-circle my-2 ml-2" src="{{ post.author.image }}" alt="image"
+                                {% if post.author.avatar %}
+                                    <img class=" rounded-circle my-2 ml-2" src="{{ post.author.avatar }}" alt="image"
                                          height="35"
                                          width="35">
                                 {% else %}
@@ -25,8 +25,10 @@
                                 <a href="{% url 'account_detail' username=post.author.username %}"
                                    class="post_header">{{ post.author.username }}</a>
                             </div>
-                            <img src="/uploads/posts/{{ post.image }}" class="post-img card-img-top"
-                                 alt="load error">
+                            <div class="post-div">
+                                <img src="{{ post.image.url }}" class="post-img"
+                                     alt="load error">
+                            </div>
                             <div class="card-body">
                                 <p class="card-text text-muted card-description">{{ post.likes_count }} отметок
                                     "Нравится"</p>

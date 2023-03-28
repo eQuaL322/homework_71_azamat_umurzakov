@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Просмотр страницы пользователя
+{% endblock %}
+
+
+{% block content %}
+    <div class="mt-5">
+        <div class="profile-header mb-4 d-flex">
+            <div class="acc-img">
+                {% if account.avatar %}
+                    <img class="rounded-circle" src="{{ account.avatar }}" alt="avatar" height="150" width="150">
+                {% else %}
+                    <img class="rounded-circle" src="https://via.placeholder.com/150x150" alt="image" height="150"
+                         width="150">
+                {% endif %}
+            </div>
+            <div class="profile-btn d-inline-block">
+                <h4 class="d-inline">{{ account.username }}</h4>
+                {% if account == user %}
+                    <a class="ml-3 mb-1 btn btn-primary btn-sm" href="#">Редактировать профиль</a>
+                {% endif %}
+                {% if user.is_authenticated %}
+                    {% if account == user %}
+                    {% else %}
+                        {% if account in user.subscriptions.all %}
+                            <a class="ml-3 mb-1 btn btn-secondary btn-sm ms-5"
+                               href="#">Отписаться</a>
+                        {% else %}
+                            <a class="ml-3 mb-1 btn btn-secondary btn-sm ms-5"
+                               href="#">Подписаться</a>
+                        {% endif %}
+                    {% endif %}
+                {% endif %}
+                <div class="count d-flex mt-2">
+                    <p class="sub mr-3 d-inline-block">{{ account.posts.all.count }} публикаций</p>
+                    <p class="sub mr-3 d-inline-block">{{ account.subscribers.all.count }} подписчиков</p>
+                    <p class="sub d-inline-block">{{ account.subscriptions.all.count }} подписок</p>
+                </div>
+                <div class="profile-desc d-flex mt-3">
+                    <h6 class="d-inline-block">{{ account.first_name }}</h6>
+                    <h6 class="ml-1 d-inline-block">{{ account.last_name }}</h6>
+                </div>
+                <p class="d-inline-block">{{ account.about_me }}</p>
+            </div>
+
+        </div>
+    </div>
+    <hr>
+    <div class="posts row mb-5">
+        {% for post in account.posts.all %}
+            <div class="post-img col-4 d-flex align-items-stretch">
+                <a href="{% url 'post_detail' post.pk %}" class="">
+                    <img class="img-post" src="{{ post.image.url }}" alt="post-img">
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

@@ -5,6 +5,7 @@ from django.core.paginator import Paginator
 from django.db.models import Q
 from django.shortcuts import redirect
 from django.urls import reverse
+from django.views import View
 from django.views.generic import TemplateView, CreateView, DetailView, UpdateView, ListView
 
 from accounts.forms import LoginForm, CustomUserCreationForm, UserChangeForm
@@ -44,7 +45,7 @@ class RegisterView(CreateView):
     success_url = '/'
 
     def post(self, request, *args, **kwargs):
-        form = self.form_class(request.POST)
+        form = self.form_class(request.POST, request.FILES)
         if form.is_valid():
             user = form.save()
             login(request, user)
@@ -82,7 +83,7 @@ class UserChangeView(UpdateView):
 
 
 class SearchAccountListView(ListView):
-    template_name: str = 'accounts_search.html'
+    template_name = 'accounts_search.html'
     model = Account
     context_object_name = 'accounts'
 
@@ -103,7 +104,11 @@ class SearchAccountListView(ListView):
 class AccountDetailView(DetailView):
     model = Account
     template_name = 'user_profile.html'
-    context_object_name = 'profile'
+    context_object_name = 'account'
     slug_field = 'username'
     slug_url_kwarg = 'username'
 
+
+class AccountFollowView(View):
+
+    def post(self, request, *args, **kwargs):

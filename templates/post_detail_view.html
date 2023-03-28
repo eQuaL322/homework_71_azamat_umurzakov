@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    Пост
+{% endblock %}
+{% block content %}
+    <div class="src_filed_2 mb-4">
+        <div class="card-group">
+            <div class="card">
+                <div class="card-text">
+                    {% if post.author.avatar %}
+                        <img class=" rounded-circle my-2 ml-2" src="{{ post.author.avatar }}" alt="image"
+                             height="35"
+                             width="35">
+                    {% else %}
+                        <img class=" rounded-circle my-2 ml-2" src="https://via.placeholder.com/50x50"
+                             alt="image"
+                             height="35"
+                             width="35">
+                    {% endif %}
+                    <a href="{% url 'account_detail' username=post.author.username %}"
+                       class="post_header">{{ post.author.username }}</a>
+                </div>
+                <div class="post-div">
+                    <img src="{{ post.image.url }}" class="post-img"
+                         alt="load error">
+                </div>
+                <div class="card-body">
+                    <p class="card-text text-muted card-description">{{ post.likes_count }} отметок
+                        "Нравится"</p>
+                    <p class="card-text card-description">{{ post.description }}</p>
+                    <p class="card-text card-description text-muted">Посмотреть все комментарии
+                        ({{ post.comments_count }})</p>
+                    {% for comment in post.comments.all %}
+                        <p class="card-comment mb-1"><b>{{ comment.author.username }}</b></p>
+                        <p class="card-comment mb-1">{{ comment.text }}</p>
+                        <p class="card-comment text-muted card-comment-date mb-2">{{ comment.created_at|date:"M d" }}</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

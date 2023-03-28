@@ -44,7 +44,12 @@
 
 .search_form {
     padding-top: 19px;
-    margin-left: 230px;
+    margin-left: 270px;
+}
+
+.search-result {
+    margin-top: 20px;
+    color: gray;
 }
 
 .input_search {
@@ -107,7 +112,7 @@ a:active {
     width: 25px;
     height: 25px;
     margin-top: 22px;
-    margin-left: 240px;
+    margin-left: 250px;
 }
 
 .card-description {
@@ -115,7 +120,39 @@ a:active {
     margin-bottom: 5px;
 }
 
+.post-div {
+    max-width: 500px;
+    overflow: hidden;
+}
+
 .post-img {
     width: 100%;
+    object-fit: contain;
+}
 
+.profile-header {
+    margin-left: 150px;
+    margin-right: 100px;
+}
+
+.profile-btn {
+    margin-left: 100px;
+}
+
+.sub {
+    font-size: 15px;
+}
+
+.img-post {
+    width: 300px;
+    height: 400px;
+}
+
+.card-comment {
+    font-size: 13px;
+    margin-bottom: 0px;
+}
+
+.card-comment-date {
+    font-size: 10px;
 }
