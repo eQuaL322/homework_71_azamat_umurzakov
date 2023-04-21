@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}
-
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
 {% block title %}
     Главная страница
 {% endblock %}
@@ -31,14 +33,14 @@
                             </div>
                             <div class="pl-3 like">
                                 {% if request.user in post.user_likes.all %}
-                                    <a href="{% url 'like' post.pk %}">
-                                        <img class="mt-2 ml-1"
+                                    <a href="#">
+                                        <img id="{{ post.pk }}" class="mt-2 ml-1 unlike"
                                              src="{% static 'img/liked.png' %}"
                                              alt="like" height="28px">
                                     </a>
                                 {% else %}
-                                    <a href="{% url 'like' post.pk %}">
-                                        <img class="mt-2 ml-1"
+                                    <a href="#">
+                                        <img id="{{ post.pk }}" class="mt-2 ml-1 like"
                                              src="{% static 'img/like.png' %}"
                                              alt="like" height="28px">
                                     </a>
@@ -73,4 +75,7 @@
             <p class="text-muted">Пожалуйста <a class="" href="{% url 'login' %}">войдите в учетную запись</a></p>
         </div>
     {% endif %}
+{% endblock %}
+{% block js %}
+    <script src="../static/like.js"></script>
 {% endblock %}

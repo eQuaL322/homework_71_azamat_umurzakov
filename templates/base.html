@@ -7,6 +7,9 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'like.js' %}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../static/like.js"></script>
     <title>{% block title %}Instagram{% endblock %}</title>
 </head>
 <body>
@@ -61,5 +64,7 @@
 <div class="container">
     {% block content %}{% endblock %}
 </div>
+{% block js %}
+{% endblock %}
 </body>
 </html>
